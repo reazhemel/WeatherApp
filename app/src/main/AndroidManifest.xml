@@ -5,6 +5,11 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
 
+<!--    background permission-->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+
     <application
         android:allowBackup="true"
         android:name="com.example.weatherapp.application.WeatherApplication"
@@ -21,11 +26,15 @@
 
         <provider
             android:name="androidx.startup.InitializationProvider"
-            android:authorities="com.example.weatherapp.androidx-startup"
-            android:exported="false" >
+            android:authorities="${applicationId}.androidx-startup"
+            android:exported="false"
+            tools:node="merge"
+            >
             <meta-data
                 android:name="androidx.work.WorkManagerInitializer"
-                android:value="androidx.startup" />
+                android:value="androidx.startup"
+                tools:node="remove"
+                />
         </provider>
 
         <activity

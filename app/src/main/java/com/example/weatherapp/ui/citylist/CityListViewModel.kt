@@ -25,7 +25,7 @@ class CityListViewModel @Inject constructor(
 
     private fun getCityWeatherInfoList(){
         viewModelScope.launch {
-            weatherRepository.getWeatherData().collect { weatherApiResponse ->
+            weatherRepository.getWeatherData(23.64, 90.01).collect { weatherApiResponse ->
                 Log.d("asd", "apiResponse: $weatherApiResponse")
                 _cityWeatherInfoState.value = weatherApiResponse.list
             }
